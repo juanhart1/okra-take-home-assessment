@@ -27,8 +27,8 @@ const StyledCard = styled.div`
     border-radius: 16px;
     color: white;
     padding: 32px;
-    min-width: 327px;
-    min-height: 180px;
+    width: 327px;
+    height: 180px;
     position: relative;
 `;
 
@@ -36,9 +36,15 @@ const BalanceAndImageWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 12px;
+    line-height: 18px;
 `;
 
-const AvailableBalance = styled.p``;
+const AvailableBalance = styled.p`
+    margin: 32px 0px;
+    font-size: 24px;
+    font-weight: 600;
+`;
 
 const StyledThumbnail = styled.img`
     border-radius: 35%;
@@ -56,7 +62,7 @@ const CardWrapper = styled.div`
 const UserDetails = () => {
     return (
         <UserDetailsWrapper>
-            <UserName> Hey, Dwyane </UserName>
+            <UserName> Hey, Dwyane 👋 </UserName>
             <UserAccountNumber> 0002176690 </UserAccountNumber>
         </UserDetailsWrapper>
     );
