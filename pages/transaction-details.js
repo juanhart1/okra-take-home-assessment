@@ -1,8 +1,6 @@
 import { useRouter } from 'next/router';
-import AccountDetailsContext from '../src/components/AccountDetailContext/AccountDetailContext';
-import testAccountDetails from '../src/__fixtures__/testAccountDetails.json';
 
-export default function TransactionDetails() {
+export default function TransactionDetails({...rest}) {
   const router = useRouter()
 
   const {
@@ -10,11 +8,11 @@ export default function TransactionDetails() {
   } = router
 
   return (
-    <AccountDetailsContext value={testAccountDetails}>
+    <div {...rest}>
       <div>Transaction Details: {transactionId}</div>
       <button type="button" onClick={() => router.push('/account-overview')}>
         Click me
       </button>
-    </AccountDetailsContext>
+    </div>
   )
 }
