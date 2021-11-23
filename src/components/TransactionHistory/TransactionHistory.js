@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// Styled Components
 const Wrapper = styled.div`
   padding: 24px;
 `;
@@ -47,6 +48,46 @@ const TransactionDetailsDate = styled.div`
   text-align: end;
   color: #737A91;
 `;
+// Styled Components
+
+// UI Components
+const DetailListItems = (transactions) => {
+  return (
+    <>
+      <DetailListItem>
+        <TransactionNameAndAmount>
+          <p> Annanaya Nadeshmo </p>
+          <p> ₦2,250.00 </p>
+        </TransactionNameAndAmount>
+        <TransactionDetailsDate>
+          <p> 28 July, 2021 </p>
+          <p> 02:26am </p>
+        </TransactionDetailsDate>
+      </DetailListItem>
+      <DetailListItem>
+        <TransactionNameAndAmount>
+          <p> Annanaya Nadeshmo </p>
+          <p> ₦2,250.00 </p>
+        </TransactionNameAndAmount>
+        <TransactionDetailsDate>
+          <p> 28 July, 2021 </p>
+          <p> 02:26am </p>
+        </TransactionDetailsDate>
+      </DetailListItem>
+      <DetailListItem>
+        <TransactionNameAndAmount>
+          <p> Annanaya Nadeshmo </p>
+          <p> ₦2,250.00 </p>
+        </TransactionNameAndAmount>
+        <TransactionDetailsDate>
+          <p> 28 July, 2021 </p>
+          <p> 02:26am </p>
+        </TransactionDetailsDate>
+      </DetailListItem>
+    </>
+  )
+};
+// UI Components
 
 export default function TransactionHistory({ ...rest }) {
   return (
@@ -57,36 +98,7 @@ export default function TransactionHistory({ ...rest }) {
       </Header>
       <TransactionDetails>
         <DetailsList>
-          <DetailListItem>
-            <TransactionNameAndAmount>
-              <p> Annanaya Nadeshmo </p>
-              <p> ₦2,250.00 </p>
-            </TransactionNameAndAmount>
-            <TransactionDetailsDate>
-              <p> 28 July, 2021 </p>
-              <p> 02:26am </p>
-            </TransactionDetailsDate>
-          </DetailListItem>
-          <DetailListItem>
-            <TransactionNameAndAmount>
-              <p> Annanaya Nadeshmo </p>
-              <p> ₦2,250.00 </p>
-            </TransactionNameAndAmount>
-            <TransactionDetailsDate>
-              <p> 28 July, 2021 </p>
-              <p> 02:26am </p>
-            </TransactionDetailsDate>
-          </DetailListItem>
-          <DetailListItem>
-            <TransactionNameAndAmount>
-              <p> Annanaya Nadeshmo </p>
-              <p> ₦2,250.00 </p>
-            </TransactionNameAndAmount>
-            <TransactionDetailsDate>
-              <p> 28 July, 2021 </p>
-              <p> 02:26am </p>
-            </TransactionDetailsDate>
-          </DetailListItem>
+          <DetailListItems />
         </DetailsList>
       </TransactionDetails>
     </Wrapper>

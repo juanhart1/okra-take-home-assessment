@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-// styled components
+// Styled Components
 const DetailsAndThumbnailWrapper = styled.div`
     align-items: center;
     display: flex;
@@ -56,7 +56,7 @@ const CardWrapper = styled.div`
     display: flex;
     justify-content: center;
 `;
-// styled components
+// Styled Components
 
 // UI Components
 const UserDetails = () => {
