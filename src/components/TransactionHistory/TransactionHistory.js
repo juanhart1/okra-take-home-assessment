@@ -43,6 +43,7 @@ const DetailListItem = styled.li`
 
 const TransactionNameAndAmount = styled.div`
   font-size: 14px;
+  text-transform: capitalize;
 `;
 
 const TransactionDetailsDate = styled.div`
@@ -61,7 +62,7 @@ const DetailListItems = () => {
     transactionHistory.map((transaction) => {
       const { amount, date, time, user, referenceNumber } = transaction;
       return (
-        <DetailListItem onClick={() => router.push({ pathname: '/transaction-details', query: { transactionId: referenceNumber } })}>
+        <DetailListItem key={referenceNumber} onClick={() => router.push({ pathname: '/transaction-details', query: { id: referenceNumber } })}>
           <TransactionNameAndAmount>
             <p> {user} </p>
             <p> ₦{amount} </p>
