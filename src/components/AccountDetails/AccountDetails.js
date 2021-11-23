@@ -12,7 +12,7 @@ const UserName = styled.p`
     font-size: 20px;
     font-weight: 600;
     line-height: 22px;
-    margin-bottom: 0;
+    margin-bottom: 4px;
 `;
 const UserAccountNumber = styled.p`
     margin: 0;
