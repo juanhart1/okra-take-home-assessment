@@ -22,12 +22,15 @@ const TransactionDetails = styled.div``;
 
 const DetailsList = styled.ul`
   padding: 0;
+  margin: 0;
+  list-style-type: none;
 `;
 
 const DetailListItem = styled.li`
   list-style-type: none;
   display: flex;
   justify-content: space-between;
+  padding: 16px 0px;
   border-bottom: 1px solid #DEE6EF;
 
   p {
@@ -54,6 +57,26 @@ export default function TransactionHistory({ ...rest }) {
       </Header>
       <TransactionDetails>
         <DetailsList>
+          <DetailListItem>
+            <TransactionNameAndAmount>
+              <p> Annanaya Nadeshmo </p>
+              <p> ₦2,250.00 </p>
+            </TransactionNameAndAmount>
+            <TransactionDetailsDate>
+              <p> 28 July, 2021 </p>
+              <p> 02:26am </p>
+            </TransactionDetailsDate>
+          </DetailListItem>
+          <DetailListItem>
+            <TransactionNameAndAmount>
+              <p> Annanaya Nadeshmo </p>
+              <p> ₦2,250.00 </p>
+            </TransactionNameAndAmount>
+            <TransactionDetailsDate>
+              <p> 28 July, 2021 </p>
+              <p> 02:26am </p>
+            </TransactionDetailsDate>
+          </DetailListItem>
           <DetailListItem>
             <TransactionNameAndAmount>
               <p> Annanaya Nadeshmo </p>
