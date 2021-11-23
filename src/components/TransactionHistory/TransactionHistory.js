@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useRouter } from 'next/router'
 
 // Styled Components
 const Wrapper = styled.div`
@@ -51,30 +52,12 @@ const TransactionDetailsDate = styled.div`
 // Styled Components
 
 // UI Components
-const DetailListItems = (transactions) => {
+const DetailListItems = () => {
+  const router = useRouter();
+
   return (
     <>
-      <DetailListItem>
-        <TransactionNameAndAmount>
-          <p> Annanaya Nadeshmo </p>
-          <p> ₦2,250.00 </p>
-        </TransactionNameAndAmount>
-        <TransactionDetailsDate>
-          <p> 28 July, 2021 </p>
-          <p> 02:26am </p>
-        </TransactionDetailsDate>
-      </DetailListItem>
-      <DetailListItem>
-        <TransactionNameAndAmount>
-          <p> Annanaya Nadeshmo </p>
-          <p> ₦2,250.00 </p>
-        </TransactionNameAndAmount>
-        <TransactionDetailsDate>
-          <p> 28 July, 2021 </p>
-          <p> 02:26am </p>
-        </TransactionDetailsDate>
-      </DetailListItem>
-      <DetailListItem>
+      <DetailListItem onClick={() => router.push({pathname: '/transaction-details', query: { transactionId: 'poop'}})}>
         <TransactionNameAndAmount>
           <p> Annanaya Nadeshmo </p>
           <p> ₦2,250.00 </p>
