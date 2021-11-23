@@ -1,14 +1,12 @@
 import styled from 'styled-components';
-import BaseAccountDetails from '../src/components/AccountDetails/AccountDetails';
-import BaseTransactionHistory from '../src/components/TransactionHistory/TransactionHistory';
+import AccountDetails from '../src/components/AccountDetails/AccountDetails';
+import TransactionHistory from '../src/components/TransactionHistory/TransactionHistory';
 import AccountDetailsContext from '../src/components/AccountDetailContext/AccountDetailContext';
-
-const AccountDetails = styled(BaseAccountDetails)``;
-const TransactionHistory = styled(BaseTransactionHistory)``;
+import testAccountDetails from '../src/__fixtures__/testAccountDetails.json';
 
 export default function AccountOverview() {
   return (
-    <AccountDetailsContext value={{ testKey: 'poop'}}>
+    <AccountDetailsContext value={testAccountDetails}>
       <AccountDetails />
       <TransactionHistory />
     </AccountDetailsContext>

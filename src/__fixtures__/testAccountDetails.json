@@ -1,0 +1,20 @@
+{
+    "accountNumber": 123456,
+    "availableBalance": 82023.39,
+    "firstName": "dwyane",
+    "lastName": "haskins",
+    "transactionHistory": [
+      {
+        "user": "annanaya nadeshmo",
+        "bank": "Union Bank",
+        "accountNumber": 2024905681,
+        "type": "credit",
+        "amount": 2250,
+        "date": "29 July, 2021",
+        "time": "02:26am",
+        "referenceNumber": "76dsffhjhj656ghgjha",
+        "description": "test transaction"
+      }
+    ],
+    "userImage": "https://i.pinimg.com/564x/b5/a2/53/b5a253e7f98c7a556fc8d493123bd049.jpg"
+  }
