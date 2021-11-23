@@ -1,14 +1,11 @@
-import styled from 'styled-components';
 import AccountDetails from '../src/components/AccountDetails/AccountDetails';
 import TransactionHistory from '../src/components/TransactionHistory/TransactionHistory';
-import AccountDetailsContext from '../src/components/AccountDetailContext/AccountDetailContext';
-import testAccountDetails from '../src/__fixtures__/testAccountDetails.json';
 
-export default function AccountOverview() {
+export default function AccountOverview({ ...rest }) {
   return (
-    <AccountDetailsContext value={testAccountDetails}>
+    <div {...rest}>
       <AccountDetails />
       <TransactionHistory />
-    </AccountDetailsContext>
+    </div>
   )
 }
