@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import { useAccountDetailsContext } from '../AccountDetailContext/AccountDetailContext';
 
 // Styled Components
 const Wrapper = styled.div`
@@ -54,22 +55,26 @@ const TransactionDetailsDate = styled.div`
 // UI Components
 const DetailListItems = () => {
   const router = useRouter();
+  const { transactionHistory } = useAccountDetailsContext();
 
   return (
-    <>
-      <DetailListItem onClick={() => router.push({pathname: '/transaction-details', query: { transactionId: 'poop'}})}>
-        <TransactionNameAndAmount>
-          <p> Annanaya Nadeshmo </p>
-          <p> ₦2,250.00 </p>
-        </TransactionNameAndAmount>
-        <TransactionDetailsDate>
-          <p> 28 July, 2021 </p>
-          <p> 02:26am </p>
-        </TransactionDetailsDate>
-      </DetailListItem>
-    </>
+    transactionHistory.map((transaction) => {
+      const { amount, date, time, user, referenceNumber } = transaction;
+      return (
+        <DetailListItem onClick={() => router.push({ pathname: '/transaction-details', query: { transactionId: referenceNumber } })}>
+          <TransactionNameAndAmount>
+            <p> {user} </p>
+            <p> ₦{amount} </p>
+          </TransactionNameAndAmount>
+          <TransactionDetailsDate>
+            <p> {date} </p>
+            <p> {time} </p>
+          </TransactionDetailsDate>
+        </DetailListItem>
+      )
+    })
   )
-};
+}
 // UI Components
 
 export default function TransactionHistory({ ...rest }) {
