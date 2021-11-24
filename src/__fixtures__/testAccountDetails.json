@@ -1,11 +1,11 @@
 {
     "accountNumber": 123456,
     "availableBalance": 82023.39,
-    "firstName": "dwyane",
-    "lastName": "haskins",
+    "firstName": "Dwyane",
+    "lastName": "Haskins",
     "transactionHistory": [
       {
-        "user": "annanaya nadeshmo",
+        "user": "Annanaya Nadeshmo",
         "bank": "Union Bank",
         "accountNumber": 2024905681,
         "type": "credit",
@@ -13,10 +13,10 @@
         "date": "29 July, 2021",
         "time": "02:26am",
         "referenceNumber": "76dsffhjhj656ghgjha",
-        "description": "test transaction"
+        "description": "Test transaction"
       },
       {
-        "user": "jimmie bobo",
+        "user": "Jimmie Bobo",
         "bank": "Union Bank",
         "accountNumber": 2024905682,
         "type": "debit",
@@ -24,10 +24,10 @@
         "date": "01 May, 2021",
         "time": "06:33pm",
         "referenceNumber": "76dsffhjhj656ghgjhb",
-        "description": "test transaction"
+        "description": "Another test transaction"
       },
       {
-        "user": "razor quan blade",
+        "user": "Razor Quan Blade",
         "bank": "Union Bank",
         "accountNumber": 2024905683,
         "type": "credit",
@@ -35,10 +35,10 @@
         "date": "19 March, 2021",
         "time": "05:45am",
         "referenceNumber": "76dsffhjhj656ghgjhc",
-        "description": "test transaction"
+        "description": "Yet another test transaction"
       },
       {
-        "user": "sister st. mary",
+        "user": "Sister St. Mary",
         "bank": "Union Bank",
         "accountNumber": 2024905684,
         "type": "debit",
@@ -46,10 +46,10 @@
         "date": "11 March, 2021",
         "time": "12:21am",
         "referenceNumber": "76dsffhjhj656ghgjhd",
-        "description": "test transaction"
+        "description": "OMG, another test transaction"
       },
       {
-        "user": "crosswallet inc.",
+        "user": "Crosswallet Inc.",
         "bank": "Union Bank",
         "accountNumber": 2024905685,
         "type": "debit",
@@ -57,7 +57,7 @@
         "date": "12 February, 2021",
         "time": "04:59am",
         "referenceNumber": "76dsffhjhj656ghgjhe",
-        "description": "test transaction"
+        "description": "... : ("
       }
     ],
     "userImage": "https://i.pinimg.com/564x/b5/a2/53/b5a253e7f98c7a556fc8d493123bd049.jpg"
