@@ -59,11 +59,13 @@ const AmountText = styled.span`
   display: flex;
   padding: 0px 4px;
   align-items: center;
+  color: ${({ type }) => type === 'credit' ? '#12B75C' : '#FF4040'};
 `;
 
 const StyledFaArrowUp = styled(FaArrowUp)`
   height: 8px;
   width: 8px;
+  margin-left: 2px;
 `;
 const StyledFaArrowDown = styled(FaArrowDown)`
   height: 8px;
@@ -80,10 +82,13 @@ const DetailListItems = () => {
     transactionHistory.map((transaction) => {
       const { amount, date, time, user, referenceNumber, type } = transaction;
       return (
-        <DetailListItem key={referenceNumber} onClick={() => router.push({ pathname: '/transaction-details', query: { id: referenceNumber } })}>
+        <DetailListItem 
+          key={referenceNumber}
+          onClick={() => router.push({ pathname: '/transaction-details', query: { id: referenceNumber } })}
+        >
           <TransactionNameAndAmount>
             <p> {user} </p>
-            <AmountText> ₦{amount} {type === 'credit' ? <StyledFaArrowUp /> : <StyledFaArrowDown /> } </AmountText>
+            <AmountText type={type}> ₦{amount} {type === 'credit' ? <StyledFaArrowUp /> : <StyledFaArrowDown /> } </AmountText>
           </TransactionNameAndAmount>
           <TransactionDetailsDate>
             <p> {date} </p>
