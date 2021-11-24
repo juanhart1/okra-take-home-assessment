@@ -118,13 +118,13 @@ const Card = ({ availableBalance, children }) => {
 
 
 export default function AccountDetails({ ...rest }) {
-  const { firstName, accountNumber, userImage, availableBalance } = useAccountDetailsContext();
+  const { firstName, accountNumber, userImageUrl, availableBalance } = useAccountDetailsContext();
 
     return (
         <div {...rest}>
             <DetailsAndThumbnailWrapper>
                 <UserDetails accountNumber={accountNumber} firstName={firstName} />
-                <UserThumbnail imageSrc={userImage} />
+                <UserThumbnail imageSrc={userImageUrl} />
             </DetailsAndThumbnailWrapper>
             <CardWrapper>
                 <Card availableBalance={availableBalance} />
