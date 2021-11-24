@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useRouter } from 'next/router';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import { useAccountDetailsContext } from '../AccountDetailContext/AccountDetailContext';
@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   padding: 24px;
 `;
 
-const Header = styled.div`
+const ListLabels = styled.div`
   display: flex;
   justify-content: space-between;
 `;
@@ -62,14 +62,16 @@ const AmountText = styled.span`
   color: ${({ type }) => type === 'credit' ? '#12B75C' : '#FF4040'};
 `;
 
-const StyledFaArrowUp = styled(FaArrowUp)`
+const baseArrowStyles = css`
   height: 8px;
   width: 8px;
   margin-left: 2px;
 `;
+const StyledFaArrowUp = styled(FaArrowUp)`
+  ${baseArrowStyles}
+`;
 const StyledFaArrowDown = styled(FaArrowDown)`
-  height: 8px;
-  width: 8px;
+  ${baseArrowStyles}
 `;
 // Styled Components
 
@@ -81,14 +83,17 @@ const DetailListItems = () => {
   return (
     transactionHistory.map((transaction) => {
       const { amount, date, time, user, referenceNumber, type } = transaction;
+
       return (
-        <DetailListItem 
+        <DetailListItem
           key={referenceNumber}
           onClick={() => router.push({ pathname: '/transaction-details', query: { id: referenceNumber } })}
         >
           <TransactionNameAndAmount>
             <p> {user} </p>
-            <AmountText type={type}> ₦{amount} {type === 'credit' ? <StyledFaArrowUp /> : <StyledFaArrowDown /> } </AmountText>
+            <AmountText type={type}>
+              ₦{amount} {type === 'credit' ? <StyledFaArrowUp /> : <StyledFaArrowDown />}
+            </AmountText>
           </TransactionNameAndAmount>
           <TransactionDetailsDate>
             <p> {date} </p>
@@ -104,10 +109,10 @@ const DetailListItems = () => {
 export default function TransactionHistory({ ...rest }) {
   return (
     <Wrapper {...rest}>
-      <Header>
+      <ListLabels>
         <TransactionHistoryText> Transaction History </TransactionHistoryText>
         <ShowAllText> Show all </ShowAllText>
-      </Header>
+      </ListLabels>
       <TransactionDetails>
         <DetailsList>
           <DetailListItems />
