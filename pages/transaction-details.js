@@ -2,31 +2,9 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { FaArrowLeft, FaDownload } from 'react-icons/fa';
 import { useAccountDetailsContext } from '../src/components/AccountDetailContext/AccountDetailContext';
+import BaseTransactionDetail from '../src/components/TransactionDetail/TransactionDetail';
 
-const Label = styled.p`
-  color: #737A91;
-  margin-bottom: 4px;
-`;
-const Content = styled.p`
-  margin: 0;
-`;
-const BankInfo = styled.p`
-  color: #737A91;
-  font-size: 12px;
-  line-height: 14px;
-  margin-top: 4px;
-`;
-
-const BaseTransactionDetail = ({ label, content, bank, time, ...rest }) => {
-  return (
-    <div {...rest}>
-      <Label> {label} </Label>
-      <Content> {content} </Content>
-      {bank && <BankInfo> {bank} </BankInfo>}
-    </div>
-  )
-};
-
+// Styled Components
 const TransactionDetail = styled(BaseTransactionDetail)`
   margin: 32px 0px;
 `;
@@ -46,11 +24,11 @@ const Wrapper = styled.div`
   padding: 24px;
 `;
 
-const Header = styled.div`
+const ButtonAndDetailWrapper = styled.div`
   display: flex;
 `;
 
-const Header2 = styled.div`
+const AmountAndBadgeWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -96,6 +74,8 @@ const BackButton = styled.button`
 const StyledFaDownload = styled(FaDownload)`
   margin-right: 10px;
 `;
+// Styled Components
+
 
 export default function TransactionDetails({ ...rest }) {
   const router = useRouter();
@@ -104,7 +84,7 @@ export default function TransactionDetails({ ...rest }) {
   } = router
   const { transactionHistory } = useAccountDetailsContext();
   const selectedTransaction = transactionHistory.find(transaction => transaction.referenceNumber === id);
-  const { amount, bank, date, description, time, user, referenceNumber, type } = selectedTransaction;
+  const { accountNumber, amount, bank, date, description, time, user, referenceNumber, type } = selectedTransaction;
 
   const onDownload = (e) => {
     e.preventDefault();
@@ -113,22 +93,22 @@ export default function TransactionDetails({ ...rest }) {
 
   return (
     <Wrapper {...rest}>
-      <Header>
+      <ButtonAndDetailWrapper>
         <BackButton type="button" onClick={() => router.push('/account-overview')}>
           <FaArrowLeft />
         </BackButton>
         <TransactionDetailText> Transaction Details </TransactionDetailText>
-      </Header>
-      <Header2>
+      </ButtonAndDetailWrapper>
+      <AmountAndBadgeWrapper>
         <TransactionAmount> ₦{amount} </TransactionAmount>
         <TypeBadge type={type}>
           <TypeText>
             {type}
           </TypeText>
         </TypeBadge>
-      </Header2>
+      </AmountAndBadgeWrapper>
       <DateText> {date} {time} </DateText>
-      <TransactionDetail label='Transfer from' content={user} bank={bank} time={time} />
+      <TransactionDetail label='Transfer from' content={user} bank={bank} accountNumber={accountNumber} />
       <TransactionDetail label='Reference Number' content={referenceNumber} />
       <TransactionDetail label='Description' content={description} />
       <DownloadButton onClick={onDownload}>
