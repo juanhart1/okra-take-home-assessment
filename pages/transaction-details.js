@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import { FaArrowLeft, FaDownload } from 'react-icons/fa';
 import { useAccountDetailsContext } from '../src/components/AccountDetailContext/AccountDetailContext';
 
 const Label = styled.p`
@@ -32,7 +33,9 @@ const TransactionDetail = styled(BaseTransactionDetail)`
 
 const DownloadButton = styled.button`
   margin: 0 auto;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #5C2682;
   border-radius: 8px;
   color: white;
@@ -53,8 +56,8 @@ const Header2 = styled.div`
   align-items: center;
   margin-top: 24px;
   `;
-  
-  const DateText = styled.p`
+
+const DateText = styled.p`
   color: #737A91;
   font-size: 14px;
   margin: 0;
@@ -88,6 +91,10 @@ const TransactionAmount = styled.span`
 
 const BackButton = styled.button``;
 
+const StyledFaDownload = styled(FaDownload)`
+  margin-right: 10px;
+`;
+
 export default function TransactionDetails({ ...rest }) {
   const router = useRouter();
   const {
@@ -96,9 +103,7 @@ export default function TransactionDetails({ ...rest }) {
   const { transactionHistory } = useAccountDetailsContext();
 
   const selectedTransaction = transactionHistory.find(transaction => transaction.referenceNumber === id);
-  console.log({ id, transactionHistory, selectedTransaction });
   const { amount, bank, date, description, time, user, referenceNumber, type } = selectedTransaction;
-  console.log({ amount, bank, date, description, time, user, referenceNumber, type });
 
   const onDownload = (e) => {
     e.preventDefault();
@@ -109,7 +114,7 @@ export default function TransactionDetails({ ...rest }) {
     <Wrapper {...rest}>
       <Header>
         <BackButton type="button" onClick={() => router.push('/account-overview')}>
-          Click me
+          <FaArrowLeft />
         </BackButton>
         <TransactionDetailText>Transaction Details</TransactionDetailText>
       </Header>
@@ -117,15 +122,16 @@ export default function TransactionDetails({ ...rest }) {
         <TransactionAmount> ₦{amount} </TransactionAmount>
         <TypeBadge>
           <TypeText>
-          {type} 
+            {type}
           </TypeText>
         </TypeBadge>
       </Header2>
-        <DateText> {date} {time} </DateText>
+      <DateText> {date} {time} </DateText>
       <TransactionDetail label='Transfer from' content={user} bank={bank} time={time} />
       <TransactionDetail label='Reference Number' content={referenceNumber} />
       <TransactionDetail label='Description' content={description} />
       <DownloadButton onClick={onDownload}>
+        <StyledFaDownload />
         <p> Download Receipt </p>
       </DownloadButton>
     </Wrapper>
