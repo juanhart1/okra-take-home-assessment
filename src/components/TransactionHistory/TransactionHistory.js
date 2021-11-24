@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import styled, { css } from 'styled-components';
 import { useRouter } from 'next/router';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
@@ -17,9 +18,12 @@ const TransactionHistoryText = styled.p`
   margin: 0;
 `;
 
+const ShowAllButton = styled.button``;
+
 const ShowAllText = styled.p`
   margin: 0;
   color: #5C2682;
+  font-weight: 600;
 `;
 
 const TransactionDetails = styled.div``;
@@ -28,6 +32,8 @@ const DetailsList = styled.ul`
   padding: 0;
   margin: 0;
   list-style-type: none;
+  height: 225px;
+  overflow: ${({ showAll }) => showAll ? 'visible' : 'hidden'};
 `;
 
 const DetailListItem = styled.li`
@@ -107,14 +113,19 @@ const DetailListItems = () => {
 // UI Components
 
 export default function TransactionHistory({ ...rest }) {
+  const [showAll, setShowAll] = useState(false);
+  const toggleShowAll = () => setShowAll(!showAll);
+
   return (
     <Wrapper {...rest}>
       <ListLabels>
         <TransactionHistoryText> Transaction History </TransactionHistoryText>
-        <ShowAllText> Show all </ShowAllText>
+        <ShowAllButton onClick={toggleShowAll}>
+          <ShowAllText> Show all </ShowAllText>
+        </ShowAllButton>
       </ListLabels>
       <TransactionDetails>
-        <DetailsList>
+        <DetailsList showAll={showAll}>
           <DetailListItems />
         </DetailsList>
       </TransactionDetails>
