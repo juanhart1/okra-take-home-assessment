@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import { useAccountDetailsContext } from '../AccountDetailContext/AccountDetailContext';
 
 // Styled Components
@@ -42,6 +43,8 @@ const DetailListItem = styled.li`
 `;
 
 const TransactionNameAndAmount = styled.div`
+  display: flex;
+  flex-direction: column;
   font-size: 14px;
   text-transform: capitalize;
 `;
@@ -50,6 +53,21 @@ const TransactionDetailsDate = styled.div`
   font-size: 12px;
   text-align: end;
   color: #737A91;
+`;
+
+const AmountText = styled.span`
+  display: flex;
+  padding: 0px 4px;
+  align-items: center;
+`;
+
+const StyledFaArrowUp = styled(FaArrowUp)`
+  height: 8px;
+  width: 8px;
+`;
+const StyledFaArrowDown = styled(FaArrowDown)`
+  height: 8px;
+  width: 8px;
 `;
 // Styled Components
 
@@ -60,12 +78,12 @@ const DetailListItems = () => {
 
   return (
     transactionHistory.map((transaction) => {
-      const { amount, date, time, user, referenceNumber } = transaction;
+      const { amount, date, time, user, referenceNumber, type } = transaction;
       return (
         <DetailListItem key={referenceNumber} onClick={() => router.push({ pathname: '/transaction-details', query: { id: referenceNumber } })}>
           <TransactionNameAndAmount>
             <p> {user} </p>
-            <p> ₦{amount} </p>
+            <AmountText> ₦{amount} {type === 'credit' ? <StyledFaArrowUp /> : <StyledFaArrowDown /> } </AmountText>
           </TransactionNameAndAmount>
           <TransactionDetailsDate>
             <p> {date} </p>

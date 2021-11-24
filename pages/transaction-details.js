@@ -89,7 +89,9 @@ const TransactionAmount = styled.span`
   font-size: 24px;
 `
 
-const BackButton = styled.button``;
+const BackButton = styled.button`
+  margin-right: 25%;
+`;
 
 const StyledFaDownload = styled(FaDownload)`
   margin-right: 10px;
@@ -101,7 +103,6 @@ export default function TransactionDetails({ ...rest }) {
     query: { id },
   } = router
   const { transactionHistory } = useAccountDetailsContext();
-
   const selectedTransaction = transactionHistory.find(transaction => transaction.referenceNumber === id);
   const { amount, bank, date, description, time, user, referenceNumber, type } = selectedTransaction;
 
@@ -116,7 +117,7 @@ export default function TransactionDetails({ ...rest }) {
         <BackButton type="button" onClick={() => router.push('/account-overview')}>
           <FaArrowLeft />
         </BackButton>
-        <TransactionDetailText>Transaction Details</TransactionDetailText>
+        <TransactionDetailText> Transaction Details </TransactionDetailText>
       </Header>
       <Header2>
         <TransactionAmount> ₦{amount} </TransactionAmount>
