@@ -64,9 +64,9 @@ const DateText = styled.p`
 `;
 
 const TypeBadge = styled.div`
-  background: #E6F6EB;
+  background: ${({ type }) => type === 'credit' ? '#E6F6EB' : '#FFB2B2'};
   border-radius: 6px;
-  color: #12B75C;
+  color: ${({ type }) => type === 'credit' ? '#12B75C' : '#FF4040'};
   font-size: 12px;
   line-height: 14px;
   text-transform: capitalize;
@@ -121,7 +121,7 @@ export default function TransactionDetails({ ...rest }) {
       </Header>
       <Header2>
         <TransactionAmount> ₦{amount} </TransactionAmount>
-        <TypeBadge>
+        <TypeBadge type={type}>
           <TypeText>
             {type}
           </TypeText>
