@@ -1,10 +1,10 @@
 import '../styles/globals.css';
 import AccountDetailsContext from '../src/components/AccountDetailContext/AccountDetailContext';
-import testAccountDetails from '../src/__fixtures__/testAccountDetails.json';
+import mockAccountDetails from '../src/__fixtures__/mockAccountDetails.json';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AccountDetailsContext value={testAccountDetails}>
+    <AccountDetailsContext value={mockAccountDetails}>
       <Component {...pageProps} />
     </AccountDetailsContext>
   )
