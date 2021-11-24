@@ -111,10 +111,10 @@ export default function TransactionDetails({ ...rest }) {
       <TransactionDetail label='Transfer from' content={user} bank={bank} accountNumber={accountNumber} />
       <TransactionDetail label='Reference Number' content={referenceNumber} />
       <TransactionDetail label='Description' content={description} />
-      <DownloadButton onClick={onDownload}>
-        <StyledFaDownload />
-        <p> Download Receipt </p>
-      </DownloadButton>
+        <DownloadButton onClick={onDownload}>
+          <StyledFaDownload />
+          <p> Download Receipt </p>
+        </DownloadButton>
     </Wrapper>
   );
 }
