@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useAccountDetailsContext } from '../AccountDetailContext/AccountDetailContext';
 
 // Styled Components
 const DetailsAndThumbnailWrapper = styled.div`
@@ -59,18 +60,18 @@ const CardWrapper = styled.div`
 // Styled Components
 
 // UI Components
-const UserDetails = () => {
+const UserDetails = ({ firstName, accountNumber }) => {
     return (
         <UserDetailsWrapper>
-            <UserName> Hey, Dwyane 👋 </UserName>
-            <UserAccountNumber> 0002176690 </UserAccountNumber>
+            <UserName> Hey, {firstName} 👋 </UserName>
+            <UserAccountNumber> {accountNumber} </UserAccountNumber>
         </UserDetailsWrapper>
     );
 };
-const UserThumbnail = () => {
+const UserThumbnail = ({ imageSrc }) => {
     return (
         <>
-            <StyledThumbnail src='https://i.pinimg.com/564x/b5/a2/53/b5a253e7f98c7a556fc8d493123bd049.jpg' />
+            <StyledThumbnail src={imageSrc} />
         </>
     );
 };
@@ -86,7 +87,7 @@ const CardWires = () => {
         </>
     );
 };
-const Card = () => {
+const Card = ({ availableBalance, children }) => {
     return (
         <StyledCard>
             <BalanceAndImageWrapper>
@@ -108,7 +109,8 @@ const Card = () => {
                     </defs>
                 </svg>
             </BalanceAndImageWrapper>
-            <AvailableBalance> ₦82,023.39  </AvailableBalance>
+            <AvailableBalance> ₦{availableBalance} </AvailableBalance>
+            {children}
         </StyledCard>
     );
 };
@@ -116,14 +118,16 @@ const Card = () => {
 
 
 export default function AccountDetails({ ...rest }) {
+  const { firstName, accountNumber, userImage, availableBalance } = useAccountDetailsContext();
+
     return (
         <div {...rest}>
             <DetailsAndThumbnailWrapper>
-                <UserDetails />
-                <UserThumbnail />
+                <UserDetails accountNumber={accountNumber} firstName={firstName} />
+                <UserThumbnail imageSrc={userImage} />
             </DetailsAndThumbnailWrapper>
             <CardWrapper>
-                <Card />
+                <Card availableBalance={availableBalance} />
             </CardWrapper>
         </div>
     )
